@@ -102,12 +102,9 @@ The shopping cart must allow multiple purchases and quantities. Buying 2 of the 
 
 - Build as a **React app** suitable for deployment to GitHub Pages
 - Use **Vite** if appropriate
-- Include clear instructions for deploying to GitHub Pages
-- Include any needed repo configuration:
-  - `package.json` homepage / base path settings
-  - GitHub Pages source settings
-  - GitHub Actions workflow if needed
-  - Required repository settings to enable GitHub Pages
+- Set the correct `base` path in `vite.config.js` to match the repository name so assets resolve correctly on GitHub Pages
+- **Set up a GitHub Actions CI/CD workflow** (`.github/workflows/deploy.yml`) that automatically builds and deploys the site to GitHub Pages on every push to `main` — this is required, not optional
+- In the GitHub repository settings, configure Pages source to **GitHub Actions** (not a branch)
 - The final result must be runnable locally with `npm install` and `npm run dev`
 - The final result must be buildable with `npm run build`
 - Make the UI **polished, fantasy-themed, and responsive** for desktop and mobile
