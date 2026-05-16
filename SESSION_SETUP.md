@@ -42,12 +42,17 @@ Digiswarm's higher-tier plans support up to 5 agents running in parallel, which 
 
 ## Pre-Run Checklist (Complete Before Each Session)
 
-### Step 1 — Create the GitHub Repo
+### Step 1 — Create the GitHub Repo and Enable GitHub Pages
 
 - [ ] Create the repo on GitHub under `cindy-pi` (e.g. `ai-storefront-anthropic`)
 - [ ] Initialize with a LICENSE (MIT recommended)
 - [ ] Do **not** pre-populate with any source files — Paul's agents build from scratch
 - [ ] Enable Issues (optional, for session notes)
+- [ ] Go to **Settings → Pages** in the new repo
+- [ ] Under **Build and deployment → Source**, select **GitHub Actions**
+- [ ] Save
+
+> **Why this must be done before the run:** The GitHub Actions deploy workflow the AI generates uses `actions/deploy-pages`, which only works when the Pages source is set to "GitHub Actions." If the source is left on the default ("Deploy from a branch"), the workflow will appear to run but will silently fail to publish the site. This is a one-time manual UI step — it cannot be set by the AI via code commits alone.
 
 ### Step 2 — Generate a Fresh Model API Key
 

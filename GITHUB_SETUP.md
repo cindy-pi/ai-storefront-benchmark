@@ -59,6 +59,19 @@ Selecting `repo` grants access to all of the following for any repo the token ca
 
 ---
 
+## Enable GitHub Pages Before Starting the Run
+
+This is a one-time manual step that must be completed **before** the model's session begins. It cannot be done by the AI via code commits.
+
+1. Go to the submission repo on GitHub
+2. Click **Settings → Pages** (left sidebar)
+3. Under **Build and deployment → Source**, select **GitHub Actions**
+4. Save
+
+**Why it matters:** The GitHub Actions deploy workflow uses `actions/deploy-pages`, which only publishes when the Pages source is set to "GitHub Actions." If it is left on the default ("Deploy from a branch"), the workflow will appear to succeed in the Actions tab but the site will never go live. Setting this before the run ensures the first successful build immediately produces a live URL.
+
+---
+
 ## Verifying the Token Works
 
 After generating the token, run a quick check with the GitHub CLI before handing it to the Digiswarm controller:
