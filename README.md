@@ -79,10 +79,16 @@ ai-storefront-benchmark/          ← This repo (meta / documentation)
 │   └── README.md                 ← Hello World — description, prompt, run notes, results
 ├── scenario2/
 │   └── README.md                 ← CI/CD Pipeline — description, prompt, run notes, results
-└── scenario3/
-    ├── README.md                 ← Full Project — description, prompt, run notes, results
-    ├── PROMPT.md                 ← The exact prompt given to each Paul instance
-    └── SCORING.md                ← Detailed scoring rubric and methodology
+├── scenario3/
+│   ├── README.md                 ← Full Project — description, prompt, run notes, results
+│   ├── PROMPT.md                 ← The exact prompt given to each Paul instance
+│   └── SCORING.md                ← Detailed scoring rubric and methodology
+└── judging/
+    ├── README.md                 ← Judges project setup and the three judging prompts
+    ├── lucy/README.md            ← Lucy's analysis (Anthropic Claude)
+    ├── john/README.md            ← John's analysis (GPT)
+    ├── george/README.md          ← George's analysis (DeepSeek)
+    └── ringo/README.md           ← Ringo's analysis (Qwen3-Code)
 
 ai-storefront-anthropic/          ← Anthropic Claude's submission
 ai-storefront-gpt/                ← GPT's submission
