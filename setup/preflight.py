@@ -160,6 +160,15 @@ def check_repo(token, owner, repo):
             "Check the token's repo scope and the repo's collaborator settings",
         )
 
+    default_branch = data.get("default_branch", "")
+    if default_branch == "main":
+        ok("Default branch is 'main' ✓")
+    else:
+        fail(
+            f"Default branch is '{default_branch}' — expected 'main'",
+            "Go to Settings → General → Default branch → click the pencil → select main → Update",
+        )
+
     return data
 
 
