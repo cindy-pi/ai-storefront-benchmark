@@ -12,15 +12,15 @@ Each Paul receives an identical brief — the same prompt, no cross-model visibi
 - The full application is deployed and live on GitHub Pages
 - All required features from the brief are implemented and functional
 - The site auto-deploys via GitHub Actions on every push to `main`
-- All GitHub Issues and Pull Requests in the repo are closed (the completion signal to the organizer)
+- All GitHub Issues and Pull Requests in the repo are closed
 
 ---
 
 ## The Prompt
 
-The full prompt delivered to each Paul instance is in [PROMPT.md](PROMPT.md).
+The full brief delivered to each Paul instance is in [PROMPT.md](PROMPT.md). Every Paul received it identically, with no additional context about the other competitors.
 
-Every Paul received this brief identically, with no additional context about the other competitors.
+**Project summary:** Build *Fizban's Wands* — a complete static e-commerce site for a whimsical magical wand shop inspired by Dragonlance. The site must include a wand catalog (36+ wands across 3 alignment categories), shopping cart, gold-balance checkout, order confirmation with a simulated receipt, and `localStorage` persistence. Built in React + Vite, auto-deployed to GitHub Pages via GitHub Actions.
 
 ---
 
@@ -32,9 +32,15 @@ Each model runs Scenario 3 in a Digiswarm session on its own dedicated repo, usi
 **Plan:** Starter Plan (1 agent at a time, sequential execution)
 **Agent team:** Paul (Liaison), Lucy (PM), John (Frontend), George (Middleware), Ringo (Backend)
 
-**Full setup procedure:** [SESSION_SETUP.md](SESSION_SETUP.md)
-**Required repo configuration:** [REPO_SETUP.md](../REPO_SETUP.md)
-**GitHub token setup:** [GITHUB_SETUP.md](../GITHUB_SETUP.md)
+**Pre-run setup (completed before each session):**
+1. Create the model's submission repo on GitHub under `cindy-pi`
+2. Initialize with a LICENSE — no source files pre-populated
+3. Go to **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**
+4. Generate a scoped GitHub token for the session (see [setup/GITHUB_SETUP.md](../setup/GITHUB_SETUP.md))
+5. Configure the Digiswarm controller: set the model, add the API key and GitHub token, set the target repo
+
+Full setup procedure and session log template: [setup/SESSION_SETUP.md](../setup/SESSION_SETUP.md)
+Required repo configuration: [setup/REPO_SETUP.md](../setup/REPO_SETUP.md)
 
 **Timing:** Starts when the prompt is submitted to Paul. Ends when the first successful `npm run build` is confirmed in the session.
 
@@ -42,15 +48,15 @@ Each model runs Scenario 3 in a Digiswarm session on its own dedicated repo, usi
 
 ## Scoring
 
-Scenario 3 is scored across three dimensions: **Originality**, **Quality**, and **Elegance**. Each dimension is scored 1–100 by each of the four models in a blind review session.
-
-Full scoring methodology and rubric: [SCORING.md](SCORING.md)
+Scenario 3 is scored by AI in a blind peer review. Each of the four models independently reviews all four submissions without knowing which model built which site.
 
 | Dimension | Description |
 |---|---|
 | **Originality** | Is the design fresh and creative, or generic and predictable? |
 | **Quality** | Is the implementation solid, complete, and functionally correct? |
 | **Elegance** | Is the UI polished, cohesive, and pleasant to use? |
+
+Each dimension is scored 1–100. The four reviewer scores are averaged into the final site score. Full methodology: [SCORING.md](SCORING.md).
 
 ---
 

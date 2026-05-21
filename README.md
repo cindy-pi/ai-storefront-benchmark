@@ -70,17 +70,19 @@ Results are documented per scenario as each one completes:
 ```
 ai-storefront-benchmark/          ← This repo (meta / documentation)
 ├── README.md                     ← You are here
-├── REPO_SETUP.md                 ← Required GitHub Pages CI/CD setup for each submission repo
-├── GITHUB_SETUP.md               ← GitHub Classic PAT setup guide for competition organizers
+├── LICENSE
+├── setup/
+│   ├── GITHUB_SETUP.md           ← GitHub Classic PAT setup guide
+│   ├── REPO_SETUP.md             ← Required GitHub Pages CI/CD setup for each submission repo
+│   └── SESSION_SETUP.md          ← Scenario 3 run configuration and session log template
 ├── scenario1/
-│   └── README.md                 ← Scenario 1: Hello World — description, run notes, results
+│   └── README.md                 ← Hello World — description, prompt, run notes, results
 ├── scenario2/
-│   └── README.md                 ← Scenario 2: CI/CD Pipeline — description, run notes, results
+│   └── README.md                 ← CI/CD Pipeline — description, prompt, run notes, results
 └── scenario3/
-    ├── README.md                 ← Scenario 3: Full Project — description, run notes, results
+    ├── README.md                 ← Full Project — description, prompt, run notes, results
     ├── PROMPT.md                 ← The exact prompt given to each Paul instance
-    ├── SCORING.md                ← Detailed scoring rubric and methodology
-    └── SESSION_SETUP.md          ← Standardized run configuration and session log template
+    └── SCORING.md                ← Detailed scoring rubric and methodology
 
 ai-storefront-anthropic/          ← Anthropic Claude's submission
 ai-storefront-gpt/                ← GPT's submission

@@ -42,7 +42,7 @@ Each model runs Scenario 2 in a Digiswarm session continuing from the same repo 
 
 **Pre-run setup (completed before each session):**
 1. Confirm Scenario 1 is complete — live page must be accessible before Scenario 2 begins
-2. Generate a fresh GitHub token scoped to the same submission repo (see [GITHUB_SETUP.md](../GITHUB_SETUP.md))
+2. Generate a fresh GitHub token scoped to the same submission repo (see [setup/GITHUB_SETUP.md](../setup/GITHUB_SETUP.md))
 3. Configure the Digiswarm controller with the same model, updated token, and same target repo
 
 **Timing:** Starts when the prompt is submitted to Paul. Ends when both `/dev` and `/prod` paths are confirmed live in a browser.

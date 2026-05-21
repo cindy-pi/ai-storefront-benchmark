@@ -26,6 +26,7 @@ Each repo uses its own name:
 | Repo | base value |
 |---|---|
 | ai-storefront-anthropic | `/ai-storefront-anthropic/` |
+| ai-storefront-gpt | `/ai-storefront-gpt/` |
 | ai-storefront-deepseek | `/ai-storefront-deepseek/` |
 | ai-storefront-qwen3 | `/ai-storefront-qwen3/` |
 
@@ -131,6 +132,7 @@ Once the Actions workflow has run successfully:
 | Repo | Expected Live URL |
 |---|---|
 | ai-storefront-anthropic | `https://cindy-pi.github.io/ai-storefront-anthropic/` |
+| ai-storefront-gpt | `https://cindy-pi.github.io/ai-storefront-gpt/` |
 | ai-storefront-deepseek | `https://cindy-pi.github.io/ai-storefront-deepseek/` |
 | ai-storefront-qwen3 | `https://cindy-pi.github.io/ai-storefront-qwen3/` |
 

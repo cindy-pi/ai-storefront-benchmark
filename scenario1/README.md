@@ -41,7 +41,7 @@ Each model runs Scenario 1 in a fresh Digiswarm session using the standard bench
 1. Create the model's submission repo on GitHub under `cindy-pi`
 2. Initialize with a LICENSE — no source files pre-populated
 3. Go to **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**
-4. Generate a scoped GitHub token for the session (see [GITHUB_SETUP.md](../GITHUB_SETUP.md))
+4. Generate a scoped GitHub token for the session (see [setup/GITHUB_SETUP.md](../setup/GITHUB_SETUP.md))
 5. Configure the Digiswarm controller: set the model, add the API key and GitHub token, set the target repo
 
 **Timing:** Starts when the prompt is submitted to Paul. Ends when the live page is confirmed accessible in a browser.

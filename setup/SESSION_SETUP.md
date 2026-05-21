@@ -33,8 +33,8 @@ Digiswarm's higher-tier plans support up to 5 agents running in parallel, which 
 |---|---|
 | Digiswarm Project | `digiswarm` (default) |
 | Agent Context | Identical — same skills, tools, and knowledge |
-| Prompt Delivered to Paul | Identical — see [PROMPT.md](PROMPT.md) |
-| Repo Setup Requirements | Identical — see [REPO_SETUP.md](../REPO_SETUP.md) |
+| Prompt Delivered to Paul | Identical — see [PROMPT.md](../scenario3/PROMPT.md) |
+| Repo Setup Requirements | Identical — see [REPO_SETUP.md](REPO_SETUP.md) |
 | Timing Start | Moment the prompt is submitted to Paul |
 | Timing End | First successful `npm run build` confirmed in session |
 
@@ -62,7 +62,7 @@ Digiswarm's higher-tier plans support up to 5 agents running in parallel, which 
 
 ### Step 3 — Generate a GitHub Token
 
-See [GITHUB_SETUP.md](../GITHUB_SETUP.md) for the full token setup guide.
+See [GITHUB_SETUP.md](GITHUB_SETUP.md) for the full token setup guide.
 
 - [ ] Go to GitHub → Settings → Developer Settings → Personal Access Tokens
 - [ ] Generate a **Classic PAT** with `repo` (full) and `workflow` scopes
@@ -81,7 +81,7 @@ See [GITHUB_SETUP.md](../GITHUB_SETUP.md) for the full token setup guide.
 ### Step 5 — Deliver the Prompt and Start Timing
 
 - [ ] Record the session start timestamp (wall clock)
-- [ ] Submit the prompt from [PROMPT.md](PROMPT.md) to Paul — deliver it exactly as written, no additions or clarifications
+- [ ] Submit the prompt from [PROMPT.md](../scenario3/PROMPT.md) to Paul — deliver it exactly as written, no additions or clarifications
 - [ ] Do not interact with Paul during the session unless the agent is completely stuck (log any intervention)
 
 ### Step 6 — End the Session
