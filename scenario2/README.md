@@ -38,7 +38,13 @@ Each model runs Scenario 2 in a Digiswarm session continuing from the same repo 
 
 **Pre-run setup (completed before each session):**
 
-These steps require human/admin action and cannot be performed by the agent via code commits alone.
+Run the pre-flight script first — it checks all of the below automatically and reports what needs fixing:
+
+```bash
+python setup/preflight.py --token ghp_xxx --repo cindy-pi/ai-storefront-[model] --scenario 2
+```
+
+The following items require human/admin action and cannot be performed by the agent via code commits alone:
 
 1. **Confirm Scenario 1 is complete** — the Hello World page must be live at the model's GitHub Pages URL before Scenario 2 begins
 2. **Enable GitHub Actions write permissions**

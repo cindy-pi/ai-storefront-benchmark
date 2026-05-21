@@ -72,6 +72,7 @@ ai-storefront-benchmark/          ← This repo (meta / documentation)
 ├── README.md                     ← You are here
 ├── LICENSE
 ├── setup/
+│   ├── preflight.py              ← Pre-flight script: verify token and repo before each session
 │   ├── GITHUB_SETUP.md           ← GitHub Classic PAT setup guide
 │   ├── REPO_SETUP.md             ← Required GitHub Pages CI/CD setup for each submission repo
 │   └── SESSION_SETUP.md          ← Scenario 3 run configuration and session log template

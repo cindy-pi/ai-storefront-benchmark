@@ -38,6 +38,13 @@ Each model runs Scenario 1 in a fresh Digiswarm session using the standard bench
 **Agent team:** Paul (Liaison), Lucy (PM), John (Frontend), George (Middleware), Ringo (Backend)
 
 **Pre-run setup (completed before each session):**
+
+Run the pre-flight script to verify token scopes, repo access, and Pages configuration before starting:
+
+```bash
+python setup/preflight.py --token ghp_xxx --repo cindy-pi/ai-storefront-[model] --scenario 1
+```
+
 1. Create the model's submission repo on GitHub under `cindy-pi`
 2. Initialize with a LICENSE — no source files pre-populated
 3. Go to **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**
