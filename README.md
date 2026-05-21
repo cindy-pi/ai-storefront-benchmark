@@ -1,12 +1,12 @@
 # AI Storefront Benchmark
 
-**AI Software Engineers Compared: Three Scenarios, Four Models**
+**AI Software Engineers Compared: Two Scenarios, Four Models**
 
 ---
 
 ## Overview
 
-This benchmark tests how well modern AI models function as autonomous software engineers by running the same three progressive scenarios across four different models — independently, without access to each other's work.
+This benchmark tests how well modern AI models function as autonomous software engineers by running the same two progressive scenarios across four different models — independently, without access to each other's work.
 
 The benchmark is organized by **[Cindy Singleton](https://github.com/cindy-pi)** as part of an industry research paper examining the real-world software engineering capabilities of modern large language models. Each model is orchestrated through **[Digiswarm AI](https://digiswarm.ai)** using the [DigiSwarm default project configuration](https://github.com/digiswarmai/skills), which ensures every model runs with the same agent framework, tooling, and skills. The only variable is the model itself.
 
@@ -41,15 +41,14 @@ Using the same configuration across all runs ensures the comparison is as contro
 
 ---
 
-## The Three Scenarios
+## The Two Scenarios
 
-Each model runs the same three scenarios in sequence. Scenarios build on each other — a model must complete Scenario 1 before Scenario 2, and Scenario 2 before Scenario 3.
+Each model runs the same two scenarios in sequence. A model must complete Scenario 1 before Scenario 2.
 
 | # | Scenario | What It Tests |
 |---|---|---|
 | 1 | [Hello World on GitHub Pages](scenario1/) | Basic deployment literacy |
-| 2 | [CI/CD Pipeline with `/dev` and `/prod`](scenario2/) | DevOps capability |
-| 3 | [Full Project Brief (AI-Judged)](scenario3/) | Full-stack product engineering |
+| 2 | [Full Project Brief (AI-Judged)](scenario2/) | Full-stack product engineering |
 
 Each scenario directory contains a README with the full description, how it was run, and the results.
 
@@ -60,8 +59,7 @@ Each scenario directory contains a README with the full description, how it was 
 Results are documented per scenario as each one completes:
 
 - [Scenario 1 Results](scenario1/#results) — Hello World on GitHub Pages
-- [Scenario 2 Results](scenario2/#results) — CI/CD Pipeline
-- [Scenario 3 Results](scenario3/#results) — Full Project (AI-Judged)
+- [Scenario 2 Results](scenario2/#results) — Full Project (AI-Judged)
 
 ---
 
@@ -75,17 +73,15 @@ ai-storefront-benchmark/          ← This repo (meta / documentation)
 │   ├── preflight.py              ← Pre-flight script: verify token and repo before each session
 │   ├── GITHUB_SETUP.md           ← GitHub Classic PAT setup guide
 │   ├── REPO_SETUP.md             ← Required GitHub Pages CI/CD setup for each submission repo
-│   └── SESSION_SETUP.md          ← Scenario 3 run configuration and session log template
+│   └── SESSION_SETUP.md          ← Scenario 2 run configuration and session log template
 ├── scenario1/
 │   └── README.md                 ← Hello World — description, prompt, run notes, results
 ├── scenario2/
-│   └── README.md                 ← CI/CD Pipeline — description, prompt, run notes, results
-├── scenario3/
 │   ├── README.md                 ← Full Project — description, prompt, run notes, results
 │   ├── PROMPT.md                 ← The exact prompt given to each Paul instance
 │   └── SCORING.md                ← Detailed scoring rubric and methodology
 └── judging/
-    ├── README.md                 ← Judges project setup and the three judging prompts
+    ├── README.md                 ← Judges project setup and the two judging prompts
     ├── lucy/README.md            ← Lucy's analysis (Anthropic Claude)
     ├── john/README.md            ← John's analysis (GPT)
     ├── george/README.md          ← George's analysis (DeepSeek)
@@ -101,11 +97,10 @@ ai-storefront-qwen3/              ← Qwen3-Code's submission
 
 ## Why This Matters
 
-This benchmark is the basis of an industry research paper by [Cindy Singleton](https://github.com/cindy-pi) examining AI-driven software development. The three-scenario structure is designed to surface different tiers of engineering capability:
+This benchmark is the basis of an industry research paper by [Cindy Singleton](https://github.com/cindy-pi) examining AI-driven software development. The two-scenario structure is designed to surface different tiers of engineering capability:
 
 - **Scenario 1** tests basic deployment literacy — can the model ship anything at all?
-- **Scenario 2** tests DevOps capability — can the model design a real CI/CD workflow?
-- **Scenario 3** tests full-stack product engineering — given a real brief, can the model deliver a complete, quality product?
+- **Scenario 2** tests full-stack product engineering — given a real brief, can the model deliver a complete, quality product?
 
 The benchmark provides reproducible, comparable data for developers, AI researchers, startups, and engineering teams interested in:
 

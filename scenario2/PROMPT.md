@@ -1,4 +1,4 @@
-# Competition Prompt — Scenario 3
+# Competition Prompt — Scenario 2
 
 This is the exact prompt delivered to each **Paul** instance — the [Digiswarm AI](https://digiswarm.ai) liaison agent for each competing model. Every Paul received this brief identically, with no additional context about the other competitors.
 

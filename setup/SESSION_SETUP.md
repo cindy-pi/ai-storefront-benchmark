@@ -1,6 +1,6 @@
-# Session Setup — Scenario 3 Run Configuration
+# Session Setup — Scenario 2 Run Configuration
 
-This document defines the exact steps followed for each model's Scenario 3 benchmark run. The process is identical across all four runs. **The only thing that changes between runs is the model selected in the Digiswarm controller.**
+This document defines the exact steps followed for each model's Scenario 2 benchmark run. The process is identical across all four runs. **The only thing that changes between runs is the model selected in the Digiswarm controller.**
 
 This standardization is a core part of the methodology — it ensures that differences in output reflect model capability, not differences in tooling, context, agent skills, or prompt delivery.
 
@@ -33,10 +33,10 @@ Digiswarm's higher-tier plans support up to 5 agents running in parallel, which 
 |---|---|
 | Digiswarm Project | `digiswarm` (default) |
 | Agent Context | Identical — same skills, tools, and knowledge |
-| Prompt Delivered to Paul | Identical — see [PROMPT.md](../scenario3/PROMPT.md) |
+| Prompt Delivered to Paul | Identical — see [PROMPT.md](../scenario2/PROMPT.md) |
 | Repo Setup Requirements | Identical — see [REPO_SETUP.md](REPO_SETUP.md) |
-| Timing Start | First issue created with label `scenario3-start` in the submission repo |
-| Timing End | Last issue closed with label `scenario3-end` in the submission repo |
+| Timing Start | First issue created with label `scenario2-start` in the submission repo |
+| Timing End | Last issue closed with label `scenario2-end` in the submission repo |
 
 ---
 
@@ -80,13 +80,13 @@ See [GITHUB_SETUP.md](GITHUB_SETUP.md) for the full token setup guide.
 
 ### Step 5 — Deliver the Prompt and Start Timing
 
-- [ ] Submit the prompt from [PROMPT.md](../scenario3/PROMPT.md) to Paul — deliver it exactly as written, no additions or clarifications
-- [ ] Confirm the first issue with label `scenario3-start` is created in the submission repo — this marks the official start time
+- [ ] Submit the prompt from [PROMPT.md](../scenario2/PROMPT.md) to Paul — deliver it exactly as written, no additions or clarifications
+- [ ] Confirm the first issue with label `scenario2-start` is created in the submission repo — this marks the official start time
 - [ ] Do not interact with Paul during the session unless the agent is completely stuck (log any intervention)
 
 ### Step 6 — End the Session
 
-- [ ] Confirm the last issue with label `scenario3-end` is closed in the submission repo — this marks the official end time
+- [ ] Confirm the last issue with label `scenario2-end` is closed in the submission repo — this marks the official end time
 - [ ] Verify the GitHub Actions workflow has deployed the site to GitHub Pages
 - [ ] Pull the final token usage / API cost from the model provider console
 - [ ] Save the session log (see template below)
@@ -107,8 +107,8 @@ Create a file called `session-log.md` in each submission repo at the end of the 
 - **Live Site:** https://cindy-pi.github.io/[repo-name]/
 
 ## Timing
-- **Start (first `scenario3-start` issue created):** YYYY-MM-DD HH:MM (timezone)
-- **End (last `scenario3-end` issue closed):** YYYY-MM-DD HH:MM (timezone)
+- **Start (first `scenario2-start` issue created):** YYYY-MM-DD HH:MM (timezone)
+- **End (last `scenario2-end` issue closed):** YYYY-MM-DD HH:MM (timezone)
 - **Total Build Time:** X hours Y minutes
 
 ## Token / Cost

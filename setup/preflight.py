@@ -219,47 +219,6 @@ def check_pages(token, owner, repo, expected_source):
     return data
 
 
-def check_actions_write_permissions(token, owner, repo):
-    """Check that Actions workflow permissions allow write (not read-only)."""
-    resp = gh(f"/repos/{owner}/{repo}/actions/permissions/workflow", token)
-
-    if resp.status_code == 403:
-        warn(
-            "Could not read Actions workflow permissions — admin access may be required",
-            "Manually verify: Settings → Actions → General → Workflow permissions → 'Read and write permissions'",
-        )
-        return None
-
-    if resp.status_code != 200:
-        warn(f"Could not read Actions workflow permissions ({resp.status_code})")
-        return None
-
-    data  = resp.json()
-    perms = data.get("default_workflow_permissions", "unknown")
-
-    if perms == "write":
-        ok("Actions workflow permissions: 'read and write' ✓")
-    else:
-        fail(
-            f"Actions workflow permissions are '{perms}' — workflows cannot push to branches",
-            "Go to Settings → Actions → General → Workflow permissions → select 'Read and write permissions'",
-        )
-
-    return perms
-
-
-def check_branch_exists(token, owner, repo, branch):
-    """Return True if the branch exists."""
-    resp = gh(f"/repos/{owner}/{repo}/branches/{branch}", token)
-    return resp.status_code == 200
-
-
-def check_branch_protection(token, owner, repo, branch):
-    """Return True if the branch has protection rules (which block workflow pushes)."""
-    resp = gh(f"/repos/{owner}/{repo}/branches/{branch}/protection", token)
-    return resp.status_code == 200  # 404 = no protection = good
-
-
 def check_repo_is_empty(token, owner, repo):
     """Warn if the repo contains files beyond a LICENSE (Scenario 3 expects a clean slate)."""
     resp = gh(f"/repos/{owner}/{repo}/contents/", token)
@@ -293,30 +252,7 @@ def scenario_1(token, owner, repo):
 
 
 def scenario_2(token, owner, repo):
-    print(f"\n{_c(BOLD)}Scenario 2 — CI/CD Pipeline{_c(RESET)}")
-
-    check_actions_write_permissions(token, owner, repo)
-
-    if check_branch_exists(token, owner, repo, "gh-pages"):
-        ok("'gh-pages' branch exists")
-        if check_branch_protection(token, owner, repo, "gh-pages"):
-            fail(
-                "'gh-pages' branch has protection rules — workflow pushes will be blocked",
-                "Go to Settings → Branches, find 'gh-pages', and remove all protection rules",
-            )
-        else:
-            ok("'gh-pages' branch has no protection rules ✓")
-    else:
-        warn(
-            "'gh-pages' branch does not exist yet",
-            "The agent creates it during the session — no action needed unless it fails to appear",
-        )
-
-    check_pages(token, owner, repo, expected_source="gh-pages")
-
-
-def scenario_3(token, owner, repo):
-    print(f"\n{_c(BOLD)}Scenario 3 — Full Project{_c(RESET)}")
+    print(f"\n{_c(BOLD)}Scenario 2 — Full Project{_c(RESET)}")
     check_pages(token, owner, repo, expected_source="actions")
     check_repo_is_empty(token, owner, repo)
 
@@ -332,13 +268,12 @@ def main():
         epilog="""
 Examples:
   python preflight.py --token ghp_xxx --repo cindy-pi/ai-storefront-anthropic --scenario 1
-  python preflight.py --token ghp_xxx --repo cindy-pi/ai-storefront-gpt       --scenario 2
-  python preflight.py --token ghp_xxx --repo cindy-pi/ai-storefront-deepseek  --scenario 3
+  python preflight.py --token ghp_xxx --repo cindy-pi/ai-storefront-anthropic --scenario 2
         """,
     )
     parser.add_argument("--token",    required=True,                          help="GitHub Personal Access Token (Classic PAT)")
     parser.add_argument("--repo",     required=True,                          help="Target repo in owner/name format")
-    parser.add_argument("--scenario", required=True, choices=["1", "2", "3"], help="Scenario to check")
+    parser.add_argument("--scenario", required=True, choices=["1", "2"], help="Scenario to check")
     parser.add_argument("--no-color", action="store_true",                    help="Disable ANSI colour output")
     args = parser.parse_args()
 
@@ -370,8 +305,6 @@ Examples:
         scenario_1(args.token, owner, repo)
     elif args.scenario == "2":
         scenario_2(args.token, owner, repo)
-    elif args.scenario == "3":
-        scenario_3(args.token, owner, repo)
 
     # Summary
     total = _passes + _warns + _fails

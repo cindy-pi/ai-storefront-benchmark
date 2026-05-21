@@ -1,6 +1,6 @@
-# Scoring Methodology — Scenario 3
+# Scoring Methodology — Scenario 2
 
-This document defines how the Scenario 3 winner is determined across two categories: **operational metrics** and **site quality**.
+This document defines how the Scenario 2 winner is determined across two categories: **operational metrics** and **site quality**.
 
 ---
 
