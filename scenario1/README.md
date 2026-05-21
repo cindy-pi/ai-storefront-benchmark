@@ -24,6 +24,7 @@ Each Paul instance received the following prompt for this scenario:
 > - Configure the repository so the page is published live at this repo's GitHub Pages URL
 > - Use a GitHub Actions workflow to build and deploy automatically on every push to `main`
 > - In the repository settings, set the Pages source to **GitHub Actions** (not a branch)
+> - The default branch is `main` — all work should be committed and merged to `main`
 >
 > The session is complete when the page is live and accessible in a browser. Do not ask for clarification — make all decisions independently.
 
@@ -42,14 +43,16 @@ Each model runs Scenario 1 in a fresh Digiswarm session using the standard bench
 Run the pre-flight script to verify token scopes, repo access, and Pages configuration before starting:
 
 ```bash
+# Run from the ai-storefront-benchmark repo root
 python setup/preflight.py --token ghp_xxx --repo cindy-pi/ai-storefront-[model] --scenario 1
 ```
 
 1. Create the model's submission repo on GitHub under `cindy-pi`
 2. Initialize with a LICENSE — no source files pre-populated
-3. Go to **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**
-4. Generate a scoped GitHub token for the session (see [setup/GITHUB_SETUP.md](../setup/GITHUB_SETUP.md))
-5. Configure the Digiswarm controller: set the model, add the API key and GitHub token, set the target repo
+3. **Set default branch to `main`** — Settings → General → Default branch → click the pencil → select `main` → Update
+4. Go to **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**
+5. Generate a scoped GitHub token for the session (see [setup/GITHUB_SETUP.md](../setup/GITHUB_SETUP.md))
+6. Configure the Digiswarm controller: set the model, add the API key and GitHub token, set the target repo
 
 **Timing:** Build time is measured from when the first issue with label `scenario1-start` is created in the submission repo to when the last issue with label `scenario1-end` is closed.
 
