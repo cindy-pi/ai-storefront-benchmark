@@ -2,15 +2,16 @@
 
 ## The Scenario
 
-**Goal:** Extend the repository with an automated CI/CD pipeline that deploys to two separate paths — `/dev` for the staging environment and `/prod` for production.
+**Goal:** Extend the repository with an automated CI/CD pipeline that deploys to two separate paths — `/dev` for staging and `/prod` for production — both driven entirely from the `main` branch.
 
-The agent must design and implement a GitHub Actions workflow that deploys to different paths based on branch or trigger, making the site accessible at both a `/dev` and a `/prod` URL on GitHub Pages.
+The agent must implement two GitHub Actions workflows: one that auto-deploys to `/dev` on every push to `main`, and one that deploys to `/prod` on a manual `workflow_dispatch` trigger. All workflow files and configuration end up committed to `main`.
 
 **Success criteria:**
-- A working GitHub Actions workflow exists in the repository
-- Pushing to the designated branch triggers an automated deploy
+- Two GitHub Actions workflows exist in the repository on `main`
+- Pushing to `main` automatically deploys to `/dev`
+- A manual `workflow_dispatch` trigger deploys to `/prod`
+- Both environments deploy independently
 - The webpage is accessible at both `/dev` and `/prod` paths on the repo's GitHub Pages URL
-- Both environments deploy independently — a push to one does not affect the other
 
 ---
 
@@ -18,12 +19,13 @@ The agent must design and implement a GitHub Actions workflow that deploys to di
 
 Each Paul instance receives the following prompt for this scenario, with the repo name substituted for their model:
 
-> I have a GitHub repo at `cindy-pi/ai-storefront-[model]` with a Hello World page already deployed to GitHub Pages via a `deploy-pages.yml` workflow on `main`. I want you to set up a CI/CD pipeline that deploys to two independent environments — `/dev` and `/prod` — on GitHub Pages. A push to `dev` should update `/dev` only, and a push to `main` should update `/prod` only. Both should run via GitHub Actions. Use a `gh-pages` branch as the Pages source. Create all the GitHub issues, assign your agents, and see the work through to completion without asking me questions. The session is complete when both URLs are live.
+> I have a GitHub repo at `cindy-pi/ai-storefront-[model]` with a Hello World page already deployed to GitHub Pages via a `deploy-pages.yml` workflow on `main`. I want you to set up a CI/CD pipeline that deploys to two independent environments — `/dev` and `/prod` — both driven from `main`. Every push to `main` should automatically deploy to `/dev`. A manual `workflow_dispatch` trigger should deploy to `/prod`. Use a `gh-pages` branch as the Pages source. All workflow files should be committed to `main`. Create all the GitHub issues, assign your agents, and see the work through to completion without asking me questions. The session is complete when both URLs are live.
 
 **Why this wording works:**
 - Names the repo explicitly — the agent doesn't have to discover it
 - Describes the existing Pages setup — no need to read or reason about what's already deployed
-- Specifies the `gh-pages` branch strategy upfront — eliminates latency from the agent reasoning to that decision
+- Specifies the `gh-pages` branch strategy and both trigger types upfront — eliminates latency from the agent reasoning to those decisions
+- Both environments driven from `main` — no permanent `dev` branch, clean final state
 - "See it through to completion" signals that the agent should monitor and unblock downstream issues, not just create them
 
 ---

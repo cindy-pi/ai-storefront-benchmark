@@ -288,14 +288,6 @@ def scenario_2(token, owner, repo):
 
     check_actions_write_permissions(token, owner, repo)
 
-    if check_branch_exists(token, owner, repo, "dev"):
-        ok("'dev' branch exists ✓")
-    else:
-        warn(
-            "'dev' branch does not exist yet",
-            "The agent creates it during the session — no action needed",
-        )
-
     if check_branch_exists(token, owner, repo, "gh-pages"):
         ok("'gh-pages' branch exists")
         if check_branch_protection(token, owner, repo, "gh-pages"):
