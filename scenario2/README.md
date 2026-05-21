@@ -55,8 +55,8 @@ The following items require human/admin action and cannot be performed by the ag
    Go to **Settings → Actions → General → Workflow permissions** and select **"Read and write permissions"**
    Without this, `git push` inside workflows fails silently — the most common failure point for this scenario
 3. **Confirm `GITHUB_TOKEN` can push to `gh-pages`** — verify no branch protection rules are set on `gh-pages` that would block the workflow from pushing to it
-5. **Generate a fresh GitHub token** scoped to the submission repo (see [setup/GITHUB_SETUP.md](../setup/GITHUB_SETUP.md))
-6. **Configure the Digiswarm controller** with the same model, updated token, and same target repo
+4. **Generate a fresh GitHub token** scoped to the submission repo (see [setup/GITHUB_SETUP.md](../setup/GITHUB_SETUP.md))
+5. **Configure the Digiswarm controller** with the same model, updated token, and same target repo
 
 > **Note on GitHub Pages source:** This scenario switches from the "GitHub Actions" Pages source used in Scenario 1 to a `gh-pages` branch source. The agent handles this via the GitHub API, but the `gh-pages` branch must be created by the first workflow run before the Pages source can be pointed at it. The agent manages this ordering — no manual Pages source change is needed before the session.
 
