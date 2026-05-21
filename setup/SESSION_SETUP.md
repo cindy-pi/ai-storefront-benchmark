@@ -35,8 +35,8 @@ Digiswarm's higher-tier plans support up to 5 agents running in parallel, which 
 | Agent Context | Identical — same skills, tools, and knowledge |
 | Prompt Delivered to Paul | Identical — see [PROMPT.md](../scenario3/PROMPT.md) |
 | Repo Setup Requirements | Identical — see [REPO_SETUP.md](REPO_SETUP.md) |
-| Timing Start | Moment the prompt is submitted to Paul |
-| Timing End | First successful `npm run build` confirmed in session |
+| Timing Start | First issue created with label `scenario3-start` in the submission repo |
+| Timing End | Last issue closed with label `scenario3-end` in the submission repo |
 
 ---
 
@@ -80,13 +80,13 @@ See [GITHUB_SETUP.md](GITHUB_SETUP.md) for the full token setup guide.
 
 ### Step 5 — Deliver the Prompt and Start Timing
 
-- [ ] Record the session start timestamp (wall clock)
 - [ ] Submit the prompt from [PROMPT.md](../scenario3/PROMPT.md) to Paul — deliver it exactly as written, no additions or clarifications
+- [ ] Confirm the first issue with label `scenario3-start` is created in the submission repo — this marks the official start time
 - [ ] Do not interact with Paul during the session unless the agent is completely stuck (log any intervention)
 
 ### Step 6 — End the Session
 
-- [ ] Record the session end timestamp when a successful `npm run build` is confirmed
+- [ ] Confirm the last issue with label `scenario3-end` is closed in the submission repo — this marks the official end time
 - [ ] Verify the GitHub Actions workflow has deployed the site to GitHub Pages
 - [ ] Pull the final token usage / API cost from the model provider console
 - [ ] Save the session log (see template below)
@@ -107,8 +107,8 @@ Create a file called `session-log.md` in each submission repo at the end of the 
 - **Live Site:** https://cindy-pi.github.io/[repo-name]/
 
 ## Timing
-- **Session Start:** YYYY-MM-DD HH:MM (timezone)
-- **Session End:** YYYY-MM-DD HH:MM (timezone)
+- **Start (first `scenario3-start` issue created):** YYYY-MM-DD HH:MM (timezone)
+- **End (last `scenario3-end` issue closed):** YYYY-MM-DD HH:MM (timezone)
 - **Total Build Time:** X hours Y minutes
 
 ## Token / Cost

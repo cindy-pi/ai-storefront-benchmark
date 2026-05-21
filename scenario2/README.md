@@ -45,7 +45,7 @@ Each model runs Scenario 2 in a Digiswarm session continuing from the same repo 
 2. Generate a fresh GitHub token scoped to the same submission repo (see [setup/GITHUB_SETUP.md](../setup/GITHUB_SETUP.md))
 3. Configure the Digiswarm controller with the same model, updated token, and same target repo
 
-**Timing:** Starts when the prompt is submitted to Paul. Ends when both `/dev` and `/prod` paths are confirmed live in a browser.
+**Timing:** Build time is measured from when the first issue with label `scenario2-start` is created in the submission repo to when the last issue with label `scenario2-end` is closed.
 
 ---
 

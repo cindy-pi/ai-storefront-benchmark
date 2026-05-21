@@ -44,7 +44,7 @@ Each model runs Scenario 1 in a fresh Digiswarm session using the standard bench
 4. Generate a scoped GitHub token for the session (see [setup/GITHUB_SETUP.md](../setup/GITHUB_SETUP.md))
 5. Configure the Digiswarm controller: set the model, add the API key and GitHub token, set the target repo
 
-**Timing:** Starts when the prompt is submitted to Paul. Ends when the live page is confirmed accessible in a browser.
+**Timing:** Build time is measured from when the first issue with label `scenario1-start` is created in the submission repo to when the last issue with label `scenario1-end` is closed.
 
 ---
 

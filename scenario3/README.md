@@ -42,7 +42,7 @@ Each model runs Scenario 3 in a Digiswarm session on its own dedicated repo, usi
 Full setup procedure and session log template: [setup/SESSION_SETUP.md](../setup/SESSION_SETUP.md)
 Required repo configuration: [setup/REPO_SETUP.md](../setup/REPO_SETUP.md)
 
-**Timing:** Starts when the prompt is submitted to Paul. Ends when the first successful `npm run build` is confirmed in the session.
+**Timing:** Build time is measured from when the first issue with label `scenario3-start` is created in the submission repo to when the last issue with label `scenario3-end` is closed.
 
 ---
 
