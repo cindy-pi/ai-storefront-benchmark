@@ -94,7 +94,7 @@ Three prompts are delivered to Paul in sequence — one per scenario. Deliver ea
 
 ### Judging Prompt 2 — Scenario 2 (CI/CD Pipeline)
 
-> All four models have completed Scenario 2. Each attempted to implement a CI/CD pipeline deploying to `/dev` and `/prod` paths on GitHub Pages.
+> All four models have completed Scenario 2. Each attempted to implement a CI/CD pipeline with two environments — `/dev` and `/prod` — both driven from the `main` branch. Every push to `main` should auto-deploy to `/dev`. A GitHub issue labeled `promote-to-prod` should trigger a deployment to `/prod`.
 >
 > Your task is to coordinate a blind peer review. Use the same Submission A–D mapping from Scenario 1 so the blind is consistent across all three judging sessions.
 >
@@ -104,9 +104,9 @@ Three prompts are delivered to Paul in sequence — one per scenario. Deliver ea
 >
 > | Score | Criteria |
 > |---|---|
-> | 90–100 | Both `/dev` and `/prod` are live; environments deploy independently; workflow is well-structured and correct |
-> | 70–89 | Both environments are live with minor issues in the workflow or independence |
-> | 50–69 | One environment works reliably; the other has problems |
+> | 90–100 | Both `/dev` and `/prod` are live; `/dev` auto-deploys from `main`; promotion gate via issue label works correctly; workflows are clean and well-structured |
+> | 70–89 | Both environments are live with minor issues in the promotion gate or workflow structure |
+> | 50–69 | One environment works reliably; the other has problems or the promotion gate is missing |
 > | 30–49 | Both environments have significant issues or the CI/CD logic is broken |
 > | 1–29 | Submission failed to implement the pipeline or neither environment is live |
 >
