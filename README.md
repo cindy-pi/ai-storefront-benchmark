@@ -45,107 +45,47 @@ Using the same configuration across all runs ensures the comparison is as contro
 
 Each model runs the same three scenarios in sequence. Scenarios build on each other — a model must complete Scenario 1 before Scenario 2, and Scenario 2 before Scenario 3.
 
-### Scenario 1 — Hello World on GitHub Pages
+| # | Scenario | What It Tests |
+|---|---|---|
+| 1 | [Hello World on GitHub Pages](scenario1/) | Basic deployment literacy |
+| 2 | [CI/CD Pipeline with `/dev` and `/prod`](scenario2/) | DevOps capability |
+| 3 | [Full Project Brief (AI-Judged)](scenario3/) | Full-stack product engineering |
 
-> **Goal:** Deploy a Hello World webpage to the model's GitHub Pages URL.
-
-The agent must create a minimal webpage and configure the repository to publish it live via GitHub Pages. This tests the agent's ability to set up a basic deployment from scratch.
-
-**Success criteria:**
-- A live webpage is accessible at the model's GitHub Pages URL
-- The page content is functional and renders correctly
-- The repository is correctly configured for GitHub Pages publishing
-
----
-
-### Scenario 2 — CI/CD Pipeline with `/dev` and `/prod` Environments
-
-> **Goal:** Extend the repository with an automated CI/CD pipeline that deploys to two separate URLs — `/dev` for the staging environment and `/prod` for production.
-
-The agent must design and implement a GitHub Actions workflow that deploys to different paths based on branch or trigger, making the site accessible at both a `/dev` and a `/prod` URL on GitHub Pages.
-
-**Success criteria:**
-- A working GitHub Actions workflow exists in the repository
-- Pushing to the designated branch triggers an automated deploy
-- The webpage is accessible at both `/dev` and `/prod` paths on GitHub Pages
-- Both environments deploy independently
-
----
-
-### Scenario 3 — Full Project Brief (Paul's Run, AI-Judged)
-
-> **Goal:** Give each model's Paul instance the full project brief and let the team build a complete product from start to finish.
-
-Each Paul receives an identical brief — the same prompt, no cross-model visibility. Paul decomposes the brief into tasks, assigns them to agents, and the team delivers a complete, deployed product.
-
-**This scenario is scored by AI.** Once all four models have submitted, each of the four models independently reviews all four submissions and scores them blind — no reviewer knows which model built which site.
-
-The full prompt given to each Paul is in [PROMPT.md](PROMPT.md).
-
-**Scoring dimensions:**
-
-| Dimension | Description |
-|---|---|
-| **Originality** | Is the design fresh and creative, or generic and predictable? |
-| **Quality** | Is the implementation solid, complete, and functionally correct? |
-| **Elegance** | Is the UI polished, cohesive, and pleasant to use? |
-
-Each dimension is scored 1–100. The four reviewer scores are averaged into the final site score. Full methodology is in [SCORING.md](SCORING.md).
+Each scenario directory contains a README with the full description, how it was run, and the results.
 
 ---
 
 ## Results
 
-### Scenario 1 — Hello World
+Results are documented per scenario as each one completes:
 
-> Results will be published here once all four models have completed Scenario 1.
-
-| Model | Build Time | Token Cost | Live URL | Status |
-|---|---|---|---|---|
-| Anthropic Claude | TBD | TBD | TBD | TBD |
-| GPT | TBD | TBD | TBD | TBD |
-| DeepSeek | TBD | TBD | TBD | TBD |
-| Qwen3-Code | TBD | TBD | TBD | TBD |
-
-### Scenario 2 — CI/CD Pipeline
-
-> Results will be published here once all four models have completed Scenario 2.
-
-| Model | Build Time | Token Cost | `/dev` URL | `/prod` URL | Status |
-|---|---|---|---|---|---|
-| Anthropic Claude | TBD | TBD | TBD | TBD | TBD |
-| GPT | TBD | TBD | TBD | TBD | TBD |
-| DeepSeek | TBD | TBD | TBD | TBD | TBD |
-| Qwen3-Code | TBD | TBD | TBD | TBD | TBD |
-
-### Scenario 3 — Full Project (AI-Judged)
-
-> Results will be published here once all four models have completed Scenario 3.
-
-| Model | Build Time | Token Cost | Originality | Quality | Elegance | **Final Score** |
-|---|---|---|---|---|---|---|
-| Anthropic Claude | TBD | TBD | TBD | TBD | TBD | **TBD** |
-| GPT | TBD | TBD | TBD | TBD | TBD | **TBD** |
-| DeepSeek | TBD | TBD | TBD | TBD | TBD | **TBD** |
-| Qwen3-Code | TBD | TBD | TBD | TBD | TBD | **TBD** |
+- [Scenario 1 Results](scenario1/#results) — Hello World on GitHub Pages
+- [Scenario 2 Results](scenario2/#results) — CI/CD Pipeline
+- [Scenario 3 Results](scenario3/#results) — Full Project (AI-Judged)
 
 ---
 
 ## Repository Structure
 
 ```
-ai-storefront-benchmark/     ← This repo (meta / documentation)
-├── README.md                ← You are here
-├── PROMPT.md                ← The exact prompt given to each Paul instance (Scenario 3)
-├── SCORING.md               ← Detailed scoring rubric and methodology
-├── REPO_SETUP.md            ← Required GitHub Pages CI/CD setup for each submission repo
-├── SESSION_SETUP.md         ← Standardized run configuration and session log template
-└── GITHUB_SETUP.md          ← GitHub Classic PAT setup guide for competition organizers
+ai-storefront-benchmark/          ← This repo (meta / documentation)
+├── README.md                     ← You are here
+├── REPO_SETUP.md                 ← Required GitHub Pages CI/CD setup for each submission repo
+├── GITHUB_SETUP.md               ← GitHub Classic PAT setup guide for competition organizers
+├── scenario1/
+│   └── README.md                 ← Scenario 1: Hello World — description, run notes, results
+├── scenario2/
+│   └── README.md                 ← Scenario 2: CI/CD Pipeline — description, run notes, results
+└── scenario3/
+    ├── README.md                 ← Scenario 3: Full Project — description, run notes, results
+    ├── PROMPT.md                 ← The exact prompt given to each Paul instance
+    ├── SCORING.md                ← Detailed scoring rubric and methodology
+    └── SESSION_SETUP.md          ← Standardized run configuration and session log template
 
-ai-storefront-anthropic/     ← Anthropic Claude's submission
-ai-storefront-gpt/           ← GPT's submission
-ai-storefront-deepseek/      ← DeepSeek's submission
-ai-storefront-qwen3/         ← Qwen3-Code's submission
+ai-storefront-anthropic/          ← Anthropic Claude's submission
+ai-storefront-gpt/                ← GPT's submission
+ai-storefront-deepseek/           ← DeepSeek's submission
+ai-storefront-qwen3/              ← Qwen3-Code's submission
 ```
 
 ---

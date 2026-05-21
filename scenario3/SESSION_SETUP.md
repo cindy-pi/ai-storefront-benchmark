@@ -1,6 +1,6 @@
-# Session Setup — Standardized Run Configuration
+# Session Setup — Scenario 3 Run Configuration
 
-This document defines the exact steps followed for each model's benchmark run. The process is identical across all three runs. **The only thing that changes between runs is the model selected in the Digiswarm controller.**
+This document defines the exact steps followed for each model's Scenario 3 benchmark run. The process is identical across all four runs. **The only thing that changes between runs is the model selected in the Digiswarm controller.**
 
 This standardization is a core part of the methodology — it ensures that differences in output reflect model capability, not differences in tooling, context, agent skills, or prompt delivery.
 
@@ -8,24 +8,24 @@ This standardization is a core part of the methodology — it ensures that diffe
 
 ## Why Digiswarm AI
 
-[Digiswarm AI](https://digiswarm.ai) was chosen as the orchestration platform specifically because it allows the underlying model to be swapped without changing anything else. The agent framework, tool access, project context, and skill set remain constant across all three runs. This makes the comparison as close to apples-to-apples as possible and removes platform bias as a confounding variable.
+[Digiswarm AI](https://digiswarm.ai) was chosen as the orchestration platform specifically because it allows the underlying model to be swapped without changing anything else. The agent framework, tool access, project context, and skill set remain constant across all four runs. This makes the comparison as close to apples-to-apples as possible and removes platform bias as a confounding variable.
 
 ## Plan Tier and Agent Concurrency
 
 This benchmark runs on the **Digiswarm Starter Plan**, which supports **1 agent running at a time**. Each model session has 4 agents configured, but they execute sequentially — one finishes before the next begins. This means build time measurements reflect sequential single-agent execution, not parallelized work.
 
-Digiswarm's higher-tier plans support up to 5 agents running in parallel, which would significantly reduce wall-clock build time. That tradeoff — plan cost vs. speed — is an interesting variable on its own and will be explored in a follow-up paper. For this benchmark, all three model runs use the same Starter Plan to keep the agent concurrency constraint identical across competitors.
+Digiswarm's higher-tier plans support up to 5 agents running in parallel, which would significantly reduce wall-clock build time. That tradeoff — plan cost vs. speed — is an interesting variable on its own and will be explored in a follow-up paper. For this benchmark, all four model runs use the same Starter Plan to keep the agent concurrency constraint identical across competitors.
 
 ---
 
 ## What Changes Per Run
 
-| Setting | Anthropic Run | DeepSeek Run | Qwen3 Run |
-|---|---|---|---|
-| Model | Claude (Anthropic) | DeepSeek | Qwen3-Coder-Nex 85B |
-| Model API Key | Anthropic key | DeepSeek key | N/A (local) |
-| GitHub Token | Scoped to `ai-storefront-anthropic` | Scoped to `ai-storefront-deepseek` | Scoped to `ai-storefront-qwen3` |
-| Target Repo | `cindy-pi/ai-storefront-anthropic` | `cindy-pi/ai-storefront-deepseek` | `cindy-pi/ai-storefront-qwen3` |
+| Setting | Anthropic Run | GPT Run | DeepSeek Run | Qwen3 Run |
+|---|---|---|---|---|
+| Model | Claude (Anthropic) | GPT | DeepSeek | Qwen3-Code |
+| Model API Key | Anthropic key | OpenAI key | DeepSeek key | N/A (local) |
+| GitHub Token | Scoped to `ai-storefront-anthropic` | Scoped to `ai-storefront-gpt` | Scoped to `ai-storefront-deepseek` | Scoped to `ai-storefront-qwen3` |
+| Target Repo | `cindy-pi/ai-storefront-anthropic` | `cindy-pi/ai-storefront-gpt` | `cindy-pi/ai-storefront-deepseek` | `cindy-pi/ai-storefront-qwen3` |
 
 ## What Stays the Same Per Run
 
@@ -34,7 +34,7 @@ Digiswarm's higher-tier plans support up to 5 agents running in parallel, which 
 | Digiswarm Project | `digiswarm` (default) |
 | Agent Context | Identical — same skills, tools, and knowledge |
 | Prompt Delivered to Paul | Identical — see [PROMPT.md](PROMPT.md) |
-| Repo Setup Requirements | Identical — see [REPO_SETUP.md](REPO_SETUP.md) |
+| Repo Setup Requirements | Identical — see [REPO_SETUP.md](../REPO_SETUP.md) |
 | Timing Start | Moment the prompt is submitted to Paul |
 | Timing End | First successful `npm run build` confirmed in session |
 
@@ -62,9 +62,10 @@ Digiswarm's higher-tier plans support up to 5 agents running in parallel, which 
 
 ### Step 3 — Generate a GitHub Token
 
+See [GITHUB_SETUP.md](../GITHUB_SETUP.md) for the full token setup guide.
+
 - [ ] Go to GitHub → Settings → Developer Settings → Personal Access Tokens
-- [ ] Generate a **Fine-grained token** scoped only to the target repo
-- [ ] Grant permissions: **Contents** (read/write), **Actions** (read/write), **Pages** (read/write), **Workflows** (read/write)
+- [ ] Generate a **Classic PAT** with `repo` (full) and `workflow` scopes
 - [ ] Set an expiration appropriate for the run duration
 
 ### Step 4 — Configure the Digiswarm Controller

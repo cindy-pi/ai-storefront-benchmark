@@ -1,4 +1,4 @@
-# Competition Prompt
+# Competition Prompt — Scenario 3
 
 This is the exact prompt delivered to each **Paul** instance — the [Digiswarm AI](https://digiswarm.ai) liaison agent for each competing model. Every Paul received this brief identically, with no additional context about the other competitors.
 
@@ -9,8 +9,9 @@ This is the exact prompt delivered to each **Paul** instance — the [Digiswarm 
 | Agent Instance | Model |
 |---|---|
 | Paul (Anthropic) | Anthropic Claude |
+| Paul (GPT) | GPT |
 | Paul (DeepSeek) | DeepSeek |
-| Paul (Qwen3) | Qwen3-Coder-Nex 85B |
+| Paul (Qwen3) | Qwen3-Code |
 
 ---
 

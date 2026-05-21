@@ -1,6 +1,6 @@
-# Scoring Methodology
+# Scoring Methodology — Scenario 3
 
-This document defines how the benchmark winner is determined across two categories: **operational metrics** and **site quality**.
+This document defines how the Scenario 3 winner is determined across two categories: **operational metrics** and **site quality**.
 
 ---
 
@@ -23,7 +23,7 @@ This is the score that determines the winner.
 
 ### How It Works
 
-Once all three sites are complete, each of the three competing models independently reviews **all three sites** — including its own — without being told which model built which site. This blind review eliminates bias and ensures the scoring reflects genuine quality assessment.
+Once all four sites are complete, each of the four competing models independently reviews **all four sites** — including its own — without being told which model built which site. This blind review eliminates bias and ensures the scoring reflects genuine quality assessment.
 
 Each reviewer scores each site on three dimensions:
 
@@ -73,7 +73,7 @@ For each model's site:
 ```
 Site Score (per reviewer) = (Originality + Quality + Elegance) / 3
 
-Final Site Score = Average of all three reviewer Site Scores
+Final Site Score = Average of all four reviewer Site Scores
 ```
 
 The model with the **highest Final Site Score** wins the benchmark.
