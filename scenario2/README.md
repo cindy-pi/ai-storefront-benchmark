@@ -2,14 +2,14 @@
 
 ## The Scenario
 
-**Goal:** Extend the repository with an automated CI/CD pipeline that deploys to two separate paths — `/dev` for staging and `/prod` for production — both driven entirely from the `main` branch.
+**Goal:** Extend the repository with an automated CI/CD pipeline that deploys to two separate paths — `/dev` for staging and `/prod` for production — both driven entirely from the `main` branch, with a GitHub issue-based promotion gate between them.
 
-The agent must implement two GitHub Actions workflows: one that auto-deploys to `/dev` on every push to `main`, and one that deploys to `/prod` on a manual `workflow_dispatch` trigger. All workflow files and configuration end up committed to `main`.
+The agent must implement two GitHub Actions workflows: one that auto-deploys to `/dev` on every push to `main`, and one that deploys to `/prod` when a GitHub issue labeled `promote-to-prod` is created. This gives a controlled promotion path — `/dev` gets every commit, `/prod` only gets promoted builds. All workflow files and configuration end up committed to `main`.
 
 **Success criteria:**
 - Two GitHub Actions workflows exist in the repository on `main`
 - Pushing to `main` automatically deploys to `/dev`
-- A manual `workflow_dispatch` trigger deploys to `/prod`
+- Creating a GitHub issue with the label `promote-to-prod` triggers a deploy to `/prod`
 - Both environments deploy independently
 - The webpage is accessible at both `/dev` and `/prod` paths on the repo's GitHub Pages URL
 
@@ -19,12 +19,13 @@ The agent must implement two GitHub Actions workflows: one that auto-deploys to 
 
 Each Paul instance receives the following prompt for this scenario, with the repo name substituted for their model:
 
-> I have a GitHub repo at `cindy-pi/ai-storefront-[model]` with a Hello World page already deployed to GitHub Pages via a `deploy-pages.yml` workflow on `main`. I want you to set up a CI/CD pipeline that deploys to two independent environments — `/dev` and `/prod` — both driven from `main`. Every push to `main` should automatically deploy to `/dev`. A manual `workflow_dispatch` trigger should deploy to `/prod`. Use a `gh-pages` branch as the Pages source. All workflow files should be committed to `main`. Create all the GitHub issues, assign your agents, and see the work through to completion without asking me questions. The session is complete when both URLs are live.
+> I have a GitHub repo at `cindy-pi/ai-storefront-[model]` with a Hello World page already deployed to GitHub Pages via a `deploy-pages.yml` workflow on `main`. I want you to set up a CI/CD pipeline that deploys to two independent environments — `/dev` and `/prod` — both driven from `main`. Every push to `main` should automatically deploy to `/dev`. When `/dev` is verified and ready to promote, creating a GitHub issue with the label `promote-to-prod` should automatically trigger a deployment to `/prod`. Use a `gh-pages` branch as the Pages source. All workflow files should be committed to `main`. Create all the GitHub issues, assign your agents, and see the work through to completion without asking me questions. The session is complete when both URLs are live and the promote workflow has been successfully triggered at least once.
 
 **Why this wording works:**
 - Names the repo explicitly — the agent doesn't have to discover it
 - Describes the existing Pages setup — no need to read or reason about what's already deployed
-- Specifies the `gh-pages` branch strategy and both trigger types upfront — eliminates latency from the agent reasoning to those decisions
+- Specifies the `gh-pages` branch strategy and both trigger mechanisms upfront — eliminates latency from the agent reasoning to those decisions
+- Issue-label promotion gate mirrors how agents already work — they create and label issues naturally
 - Both environments driven from `main` — no permanent `dev` branch, clean final state
 - "See it through to completion" signals that the agent should monitor and unblock downstream issues, not just create them
 
