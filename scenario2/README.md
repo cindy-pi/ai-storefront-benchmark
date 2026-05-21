@@ -41,6 +41,7 @@ Each model runs Scenario 2 in a Digiswarm session continuing from the same repo 
 Run the pre-flight script first — it checks all of the below automatically and reports what needs fixing:
 
 ```bash
+# Run from the ai-storefront-benchmark repo root
 python setup/preflight.py --token ghp_xxx --repo cindy-pi/ai-storefront-[model] --scenario 2
 ```
 
@@ -50,8 +51,7 @@ The following items require human/admin action and cannot be performed by the ag
 2. **Enable GitHub Actions write permissions**
    Go to **Settings → Actions → General → Workflow permissions** and select **"Read and write permissions"**
    Without this, `git push` inside workflows fails silently — the most common failure point for this scenario
-3. **Create the `dev` branch** from `main` — the CI/CD workflow triggers on push to `dev`; if the branch doesn't exist, the trigger never fires
-4. **Confirm `GITHUB_TOKEN` can push to `gh-pages`** — verify no branch protection rules are set on `gh-pages` that would block the workflow from pushing to it
+3. **Confirm `GITHUB_TOKEN` can push to `gh-pages`** — verify no branch protection rules are set on `gh-pages` that would block the workflow from pushing to it
 5. **Generate a fresh GitHub token** scoped to the submission repo (see [setup/GITHUB_SETUP.md](../setup/GITHUB_SETUP.md))
 6. **Configure the Digiswarm controller** with the same model, updated token, and same target repo
 

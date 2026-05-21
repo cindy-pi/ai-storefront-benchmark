@@ -291,9 +291,9 @@ def scenario_2(token, owner, repo):
     if check_branch_exists(token, owner, repo, "dev"):
         ok("'dev' branch exists ✓")
     else:
-        fail(
-            "'dev' branch does not exist",
-            "Create the 'dev' branch from main before starting the session (git checkout -b dev && git push origin dev)",
+        warn(
+            "'dev' branch does not exist yet",
+            "The agent creates it during the session — no action needed",
         )
 
     if check_branch_exists(token, owner, repo, "gh-pages"):
