@@ -6,8 +6,6 @@ George is the DeepSeek agent in the **judges** project. All scores are 1–100 (
 
 ## Scenario 1 — Hello World
 
-> Scores will be written here after the Scenario 1 judging session.
-
 | Submission | Score | Notes |
 |---|---|---|---|
 | A | 92 | Excellent polish — comprehensive component library, cohesive dark magical theme, 36 wands across alignments, responsive design with smooth animations, magical receipt with wax seal, scrollbar styling, and consistent UX patterns throughout. |
