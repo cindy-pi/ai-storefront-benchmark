@@ -125,3 +125,9 @@ Two prompts are delivered to Paul in sequence — one per scenario. Deliver each
 **Scenario 2:** Each judge averages their three dimension scores (Originality + Quality + Elegance / 3) into a site score. The four site scores are then averaged into the final score. See [scenario2/SCORING.md](../scenario2/SCORING.md) for the full formula.
 
 Results are published in each scenario's README once all four judges have submitted.
+
+---
+
+## Final Results
+
+The complete benchmark results — including all scenario scores, cost data, and score vs cost analysis — are in [RESULTS.md](../RESULTS.md) at the repo root.
