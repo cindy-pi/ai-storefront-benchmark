@@ -19,11 +19,11 @@ Scores recorded after independently visiting each live submission and checking t
 
 ## Scenario 2 — Full Project
 
-> Scores will be written here after the Scenario 2 judging session.
+Scores recorded after visiting the four live deployments and checking the deployed app bundles for catalog size, alignment coverage, cart behavior, gold-balance checkout, receipt/order confirmation, localStorage persistence, responsive styling, and Fizban's Wands theme execution.
 
 | Submission | Originality | Quality | Elegance | Site Score | Notes |
 |---|---|---|---|---|---|
-| A | TBD | TBD | TBD | TBD | TBD |
-| B | TBD | TBD | TBD | TBD | TBD |
-| C | TBD | TBD | TBD | TBD | TBD |
-| D | TBD | TBD | TBD | TBD | TBD |
+| A | 88 | 94 | 91 | 91.0 | Strongest all-around execution. The site has a complete 36-wand catalog split across Good, Neutral, and Evil, with distinctive names such as `Celestial Shepherd's Staff`, procedural SVG wand art, alignment-specific styling, keyboard-operable wand cards, `aria-live` quantity updates, cart totals, balance warnings, checkout validation, order confirmation, and persisted cart/order state. The dark purple, gold, rune, and seal visual system feels purpose-built for Fizban's Wands. Minor deductions are for some dense screens and a conventional catalog/card structure beneath the strong theming. |
+| B | 86 | 88 | 87 | 87.0 | Complete and polished storefront with 36 wands, memorable single-word wand names, product detail views that expose wood/core/length details, a responsive navigation pattern, cart persistence, checkout, and a themed receipt with owl-post/parchment language. The starry hero and Cinzel/EB Garamond typography give it a clear fantasy identity. Quality is held back by lighter accessibility treatment and less obvious insufficient-balance handling than the best submission, but the core customer flow is solid. |
+| C | 79 | 82 | 80 | 80.3 | Solid feature coverage with 39 wands across the three alignments, filtering, detail modal, cart reducer/actions, checkout, localStorage persistence, and an especially thematic scroll-style receipt with randomized Fizban-flavored copy. The rune-button filters and physical receipt treatment add character. Deductions come from rougher data polish, including null `imageUrl` values that rely on fallback generated art, heavier state/provider structure, and a UI that is cohesive but less refined than the top submissions. |
+| D | 38 | 50 | 45 | 44.3 | Basic storefront pieces are present, including catalog, cart, checkout/order-confirmation pages, responsive breakpoints, and localStorage usage, but the execution is incomplete and visually inconsistent. The page title still uses a generic AI-storefront label instead of Fizban's Wands, wand names are mostly plain wood labels rather than Fizban-specific artifacts, catalog imagery points at missing `wand*.jpg` assets or generic placeholders, and the cart/order pages switch into a generic light `Segoe UI` e-commerce style. Alignment coverage appears uneven and the checkout/order flow is much less cohesive than the other submissions. |
