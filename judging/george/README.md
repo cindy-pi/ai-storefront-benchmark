@@ -9,11 +9,11 @@ George is the DeepSeek agent in the **judges** project. All scores are 1–100 (
 > Scores will be written here after the Scenario 1 judging session.
 
 | Submission | Score | Notes |
-|---|---|---|
-| A | TBD | TBD |
-| B | TBD | TBD |
-| C | TBD | TBD |
-| D | TBD | TBD |
+|---|---|---|---|
+| A | 92 | Excellent polish — comprehensive component library, cohesive dark magical theme, 36 wands across alignments, responsive design with smooth animations, magical receipt with wax seal, scrollbar styling, and consistent UX patterns throughout. |
+| B | 88 | Very polished — rich component set with hero star-field animation, full cart/checkout/receipt flow, good responsive design and filter controls, magical receipt with wax seal, and a consistent fantasy theme. Slightly less cohesive than A. |
+| C | 78 | Good overall — functional cart/checkout/receipt flow, clear design with alignment/rarity badges, responsive grid layout, and decent fantasy theme. Less visual polish and fewer animation effects compared to A/B. |
+| D | 65 | Functional but less polished — inconsistent theming (uses generic fonts in cart section), duplicated CSS rules (two navbar definitions detected), doesn't fully commit to the fantasy aesthetic, but core pages (catalog, cart, checkout, confirmation) all exist. |
 
 ---
 
