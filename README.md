@@ -114,3 +114,57 @@ The benchmark provides reproducible, comparable data for developers, AI research
 ## About Digiswarm AI
 
 [Digiswarm AI](https://digiswarm.ai) provides the agent tooling used to orchestrate each model's development session in this benchmark. All runs use the public [DigiSwarm default project configuration](https://github.com/digiswarmai/skills). Visit [digiswarm.ai](https://digiswarm.ai) to learn more.
+
+---
+
+## Final Results
+
+All four models have completed both scenarios. Below is the full summary. See [RESULTS.md](RESULTS.md) for a full judge-by-judge breakdown.
+
+### Blind Reveal
+
+Judging was conducted blind — submissions were labeled A–D with model identity withheld from all judges until scoring was complete.
+
+| Label | Model |
+|-------|-------|
+| **A** | Anthropic Claude |
+| **B** | GPT |
+| **C** | DeepSeek |
+| **D** | Qwen3-Code |
+
+### Scenario 1 — Hello World on GitHub Pages
+
+| Rank | Model | Score | Cost |
+|------|-------|:-----:|-----:|
+| 1 | Anthropic Claude | 94.25 | $2.38 |
+| 2 | GPT | 92.00 | $1.24 |
+| 3 | DeepSeek | 83.00 | $0.01 |
+| 4 | Qwen3-Code | 66.50 | $0.00 |
+
+### Scenario 2 — Full Project (Fizban's Wands)
+
+| Rank | Model | Originality | Quality | Elegance | Overall Score | Cost |
+|------|-------|:-----------:|:-------:|:--------:|:-------------:|-----:|
+| 1 | Anthropic Claude | 87.75 | 94.25 | 91.00 | 91.00 | $13.91 |
+| 2 | GPT | 86.25 | 90.25 | 89.00 | 88.50 | $10.56 |
+| 3 | DeepSeek | 77.00 | 79.50 | 77.00 | 77.83 | $0.09 |
+| 4 | Qwen3-Code | 43.75 | 53.00 | 46.25 | 47.67 | $0.00 |
+
+### Value Analysis
+
+| Model | Total Score (S1 + S2) | Total Cost | Score per $ |
+|-------|-----------------------|:----------:|:-----------:|
+| Anthropic Claude | 185.25 | $16.29 | 11.4 |
+| GPT | 180.50 | $11.80 | 15.3 |
+| DeepSeek | 160.83 | $0.10 | 1,608 |
+| Qwen3-Code | 114.17 | $0.00 | — |
+
+> **Note:** DeepSeek's score-per-dollar ratio is extremely high because its cost approaches zero. Qwen3-Code had no measurable cost, so a ratio is not defined. These ratios are directional indicators rather than precise value metrics.
+
+**Key takeaways:**
+- **Best overall performer:** Anthropic Claude (94.25 / 91.00) — top scores in both scenarios
+- **Best value (cost-adjusted):** DeepSeek — competitive mid-tier scores at near-zero cost
+- **Most affordable frontier result:** GPT — second in both scenarios at ~$12 total
+- **Lowest cost:** Qwen3-Code ($0.00) — but also lowest scores in both scenarios
+
+See [RESULTS.md](RESULTS.md) for the full judge-by-judge breakdown including individual scores across all three dimensions.
