@@ -1,102 +1,114 @@
 # GitHub Setup Guide
 
-This document is for anyone running or replicating this benchmark. It covers exactly what GitHub token permissions are required for each model's session, why each permission is needed, and how to generate the token correctly.
+This guide covers creating the target repo, enabling GitHub Pages, and generating a GitHub token for a benchmark run. The token is **fine-grained and scoped to a single repo**, so a leaked or expired token cannot affect any other repository.
 
 ---
 
-## Token Type — Classic PAT
+## Recommended: Use the Setup Script
 
-Use a **Classic Personal Access Token**. It covers everything the agent needs with just two scope selections and is the simplest option to set up.
+`github_setup.py` (in this directory) automates the repo creation, Pages configuration, and token generation in one guided flow.
+
+**Prerequisites:** Python 3 + `pip install requests`
+
+```powershell
+cd ai-storefront-benchmark\setup
+python github_setup.py --repo cindy-pi/ai-storefront-anthropic --scenario 2
+```
+
+The script will:
+
+1. Use your existing admin token (from `GH_TOKEN`, `gh auth token`, or a prompt) to create the repo
+2. Initialize it with a MIT LICENSE so the `main` branch exists immediately
+3. Enable GitHub Pages with **GitHub Actions** as the source
+4. Open your browser to the fine-grained token creation page with exact instructions
+5. Accept the new token, validate it against all preflight checks, and print it for copying
+
+### Re-validating a token without re-running setup
+
+If you need to re-check a token you already have:
+
+```powershell
+python github_setup.py --repo cindy-pi/ai-storefront-anthropic --scenario 2 --token github_pat_xxx...
+```
 
 ---
 
-## How to Create the Token
+## Token Type — Fine-Grained PAT (Recommended)
 
-1. Go to **GitHub → Settings → Developer Settings → Personal Access Tokens → Tokens (classic)**
-2. Click **Generate new token (classic)**
-3. Set a **Note** that identifies the run — e.g. `digiswarm-anthropic-run`
-4. Set an **Expiration** — 30 days is a safe choice; enough time to complete the run with buffer
-5. Select the two scopes below
-6. Click **Generate token** and save it immediately — GitHub will not show it again
+Each run uses a **fine-grained Personal Access Token scoped to a single repository**. If the token is ever exposed, it cannot be used to access any other repo.
 
----
+### Required Repository Permissions
 
-## Required Scopes
+When the script opens the token creation page, set these under **Permissions → Repository permissions**:
 
-Only two scopes are needed:
-
-| Scope | Why It's Needed |
+| Permission | Level |
 |---|---|
-| **`repo`** (full) | Covers everything in the submission repo — pushing code, reading/writing branches, Issues, Pull Requests, deployments, Pages configuration, secrets, variables, and environments |
-| **`workflow`** | Allows the agent to create and modify `.github/workflows/` files — required to set up the GitHub Actions CI/CD pipeline that deploys to GitHub Pages |
+| **Actions** | Read and write |
+| **Contents** | Read and write |
+| **Issues** | Read and write |
+| **Metadata** | Read-only *(auto-selected, required)* |
+| **Pages** | Read and write |
+| **Pull requests** | Read and write |
+| **Workflows** | Read and write |
 
-Check both boxes and nothing else.
+Set **Repository access** to **Only select repositories** and choose only the target repo for this run.
+
+### Why fine-grained over Classic PAT?
+
+A Classic PAT with `repo` scope grants write access to **every repository you own**. A fine-grained token scoped to one repo means:
+
+- A compromised token affects only that run's submission repo
+- You can revoke per-run without touching other tokens
+- The permission surface is exactly what the agent needs — nothing more
 
 ---
 
-## What `repo` Covers
+## Manual Setup (Fallback)
 
-Selecting `repo` grants access to all of the following for any repo the token can see:
+If you prefer not to use the script, follow these steps manually.
 
-- Code — push commits, create and delete branches, read contents
-- Issues — create, comment on, and close issues
-- Pull Requests — open, review, merge, and close PRs
-- Deployments — create and manage deployments (used by GitHub Pages)
-- Pages — enable GitHub Pages and configure the Pages source
-- Environments — manage deployment environments (e.g. the `github-pages` environment)
-- Secrets — add and manage repository secrets
-- Variables — add and manage repository variables
-- Commit statuses — report pass/fail status on commits
+### 1 — Create the repo
+
+- Go to GitHub and create a new public repo under `cindy-pi`
+- Initialize with a **MIT License** (this creates the `main` branch)
+- Do **not** add any other files — agents build from scratch
+
+### 2 — Enable GitHub Pages
+
+- Go to **Settings → Pages** in the new repo
+- Under **Build and deployment → Source**, select **GitHub Actions**
+- Save
+
+> **Why this must be done before the run:** The deploy workflow uses `actions/deploy-pages`, which only publishes when the source is set to "GitHub Actions." If left on the default ("Deploy from a branch"), the workflow appears to succeed but the site never goes live.
+
+### 3 — Generate a Fine-Grained Token
+
+1. Go to **GitHub → Settings → Developer Settings → Personal Access Tokens → Fine-grained tokens**
+2. Click **Generate new token**
+3. Set a **Token name** — e.g. `ai-storefront-anthropic`
+4. Set **Expiration** — 90 days is a safe default
+5. Under **Resource owner**, select `cindy-pi`
+6. Under **Repository access**, choose **Only select repositories** → select the target repo
+7. Under **Permissions → Repository permissions**, set the seven permissions in the table above
+8. Click **Generate token** and copy it immediately — it is shown only once
+
+---
+
+## Verifying the Token
+
+Run `preflight.py` to confirm everything is configured correctly before starting the session:
+
+```powershell
+python preflight.py --token github_pat_xxx... --repo cindy-pi/ai-storefront-anthropic --scenario 2
+```
+
+Expected output: all checks **PASS**, with one **WARN** on the scope header (fine-grained tokens don't expose scopes in that header — this is expected and does not cause a failure).
 
 ---
 
 ## Security Recommendations
 
-- **One token per run.** Generate a separate token for each model's repo. If a token is ever exposed, it only affects one submission.
-- **Set an expiration.** 30 days is practical; revoke manually once the run is done.
-- **Never commit the token.** Add it to the Digiswarm controller only — it should never appear in the repo, `.env` files, or any logs.
+- **One token per repo.** Generate a separate token for each model's run — the script enforces this by design.
+- **Set an expiration.** 90 days gives buffer; revoke manually once the run is complete.
+- **Never commit the token.** Add it to the Digiswarm controller only — it must never appear in the repo, `.env` files, or any logs.
 - **Revoke after the run.** Once the site is live and all Issues and PRs are closed, revoke the token under GitHub → Settings → Developer Settings → Personal Access Tokens. The GitHub Pages site stays live without it.
-
----
-
-## Enable GitHub Pages Before Starting the Run
-
-This is a one-time manual step that must be completed **before** the model's session begins. It cannot be done by the AI via code commits.
-
-1. Go to the submission repo on GitHub
-2. Click **Settings → Pages** (left sidebar)
-3. Under **Build and deployment → Source**, select **GitHub Actions**
-4. Save
-
-**Why it matters:** The GitHub Actions deploy workflow uses `actions/deploy-pages`, which only publishes when the Pages source is set to "GitHub Actions." If it is left on the default ("Deploy from a branch"), the workflow will appear to succeed in the Actions tab but the site will never go live. Setting this before the run ensures the first successful build immediately produces a live URL.
-
----
-
-## Verifying the Token Works
-
-After generating the token, run a quick check with the GitHub CLI before handing it to the Digiswarm controller:
-
-```bash
-# Set the token temporarily
-export GITHUB_TOKEN=your_token_here
-
-# Confirm it can see the repo
-gh repo view cindy-pi/ai-storefront-anthropic
-
-# Confirm it can see Actions
-gh run list --repo cindy-pi/ai-storefront-anthropic
-```
-
-Both commands should return results without a permissions error.
-
----
-
-## One-Page Summary
-
-> **Token type:** Classic PAT
->
-> **Scopes needed:** `repo` (full) + `workflow`
->
-> **Expiration:** 30 days
->
-> **One token per repo. Revoke after the run.**
